@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div class="col-6 mb-5">
+                <div class="card h-100 w-100">
+                    <!-- Product image-->
+                    <img class="card-img-top" src="{{product.product.image.url}}" alt="..." height="250px">
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.product.product_name}}</h5>
+                            {{product.product.category}}
+                            <!-- Product price-->
+                            ₹{{product.product.price}}/-<br>
+                            {{product.product.description}}<br>
+                            {{product.product.rating}} <i class="fa-solid fa-star"></i><br>
+                            Quantity : {{product.quantity}}
+
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <!-- <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-6 m-1 container-fluid p-2 d-flex align-items-center justify-content-center">
+                <div class="p-3 border rounded w-100">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{form.address}}
+                        <label>Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{form.email}}
+                        <label>Email</label>
+                    </div>
+                    <div class="w-100 d-flex flex-column align-items-center">
+                        <input type="submit" class="btn btn-success mt-3" value="Place order">
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
